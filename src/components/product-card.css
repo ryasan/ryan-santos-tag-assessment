@@ -1,11 +1,9 @@
 .product-card {
-	/* These variables are now available to any descendant of .product-card */
 	--product-card-cart-button-height: 40px;
 	--product-card-cart-button-gap: var(--spacing-md);
 	--product-card-body-padding: var(--spacing-xl);
 	--product-card-hover-offset: calc(
-		var(--product-card-cart-button-height) + var(--product-card-cart-button-gap) +
-			var(--product-card-body-padding)
+		var(--product-card-cart-button-height) + var(--product-card-cart-button-gap)
 	);
 
 	display: flex;
@@ -15,6 +13,7 @@
 	background: var(--color-card-bg);
 	position: relative;
 	overflow: hidden;
+	cursor: pointer;
 
 	@media (max-width: 768px) {
 		max-width: 280px;
@@ -87,7 +86,7 @@
 	flex-direction: column;
 	gap: var(--product-card-cart-button-gap);
 	width: 100%;
-	padding-block: var(--product-card-body-padding);
+	padding-top: var(--product-card-body-padding);
 	background: var(--color-card-bg);
 	margin-bottom: calc(-1 * var(--product-card-hover-offset));
 	transition: transform 0.5s ease;
@@ -111,7 +110,7 @@
 	flex-direction: column;
 	gap: var(--spacing-xs);
 
-	h3 {
+	h2 {
 		font-size: 20px;
 		font-weight: var(--font-weight-semibold);
 		line-height: 1.2;
@@ -165,6 +164,12 @@
 		outline: 2px solid var(--color-primary);
 		outline-offset: 2px;
 	}
+}
+
+.product-card__swatch--selected {
+	box-shadow:
+		inset 0 0 0 1px var(--color-primary),
+		0 0 0 1px var(--color-primary);
 }
 
 .product-card__swatch-count {

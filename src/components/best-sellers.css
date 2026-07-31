@@ -20,7 +20,7 @@
 	width: 100%;
 	gap: var(--spacing-2xl);
 
-	h2 {
+	h1 {
 		font-size: 36px;
 		font-weight: var(--font-weight-semibold);
 		line-height: 1.2;
@@ -114,4 +114,10 @@
 
 .best-sellers__nav-icon {
 	display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.best-sellers__nav-button {
+		transition: none;
+	}
 }

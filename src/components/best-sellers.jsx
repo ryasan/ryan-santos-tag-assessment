@@ -4,6 +4,9 @@ import useEmblaCarousel from 'embla-carousel-react'
 import ProductCard from './product-card'
 import './best-sellers.css'
 
+const prefersReducedMotion =
+	typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
 function ChevronLeftIcon() {
 	return (
 		<svg
@@ -53,6 +56,7 @@ export default function BestSellers() {
 		dragFree: true,
 		containScroll: 'trimSnaps',
 		align: 'start',
+		duration: prefersReducedMotion ? 0 : 25,
 	})
 	const [canScrollPrev, setCanScrollPrev] = useState(false)
 	const [canScrollNext, setCanScrollNext] = useState(false)
@@ -66,10 +70,16 @@ export default function BestSellers() {
 		if (!emblaApi) return
 
 		updateScrollState(emblaApi)
-		emblaApi.on('reInit', updateScrollState).on('select', updateScrollState)
+		emblaApi
+			.on('reInit', updateScrollState)
+			.on('select', updateScrollState)
+			.on('scroll', updateScrollState)
 
 		return () => {
-			emblaApi.off('reInit', updateScrollState).off('select', updateScrollState)
+			emblaApi
+				.off('reInit', updateScrollState)
+				.off('select', updateScrollState)
+				.off('scroll', updateScrollState)
 		}
 	}, [emblaApi, updateScrollState])
 
@@ -84,14 +94,20 @@ export default function BestSellers() {
 	return (
 		<section className="best-sellers" aria-labelledby="best-sellers-heading">
 			<header className="best-sellers__header">
-				<h2 id="best-sellers-heading">Best Sellers</h2>
+				<h1 id="best-sellers-heading">Best Sellers</h1>
 				<a href="/collections/best-sellers" className="best-sellers__shop-all">
 					Shop All
 				</a>
 			</header>
 
 			<div className="best-sellers__carousel">
-				<div className="best-sellers__viewport" ref={emblaRef}>
+				<div
+					className="best-sellers__viewport"
+					ref={emblaRef}
+					role="region"
+					aria-roledescription="carousel"
+					aria-label="Best Sellers products"
+				>
 					<div className="best-sellers__container">
 						{products.map((product, index) => (
 							<div className="best-sellers__slide" key={product.id}>
@@ -101,7 +117,7 @@ export default function BestSellers() {
 					</div>
 				</div>
 
-				<div className="best-sellers__nav" role="group" aria-label="Best Sellers carousel">
+				<div className="best-sellers__nav" role="group" aria-label="Carousel controls">
 					<button
 						type="button"
 						className="best-sellers__nav-button"

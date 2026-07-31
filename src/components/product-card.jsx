@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './product-card.css'
 
 const currencyFormatter = new Intl.NumberFormat('en-US', {
@@ -9,9 +10,11 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 export default function ProductCard({ product, priority = false }) {
 	const formattedPrice = currencyFormatter.format(product.price)
 	const displaySwatches = product.swatches.slice(0, 5)
+	const [selectedSwatchId, setSelectedSwatchId] = useState(product.selectedSwatchId)
+	const nameId = `product-name-${product.id}`
 
 	return (
-		<article className="product-card">
+		<article className="product-card" aria-labelledby={nameId}>
 			<div className="product-card__image">
 				{product.badges?.length > 0 && (
 					<div className="product-card__badges">
@@ -38,7 +41,8 @@ export default function ProductCard({ product, priority = false }) {
 				/>
 				<img
 					src={product.hoverImage}
-					alt={product.hoverImageAlt}
+					alt=""
+					aria-hidden="true"
 					className="product-card__img product-card__img--hover"
 					width={329}
 					height={494}
@@ -51,38 +55,46 @@ export default function ProductCard({ product, priority = false }) {
 				<div className="product-card__info">
 					<div className="product-card__name-price">
 						<div className="product-card__name-group">
-							<h3>{product.name}</h3>
+							<h2 id={nameId}>{product.name}</h2>
 							<p>{product.subtitle}</p>
 						</div>
 						<p className="product-card__price">{formattedPrice}</p>
 					</div>
 
-					<div className="product-card__swatches">
+					<div className="product-card__swatches" role="group" aria-label="Color options">
 						{displaySwatches.map((swatch) => {
-							const isSelected = swatch.id === product.selectedSwatchId
+							const isSelected = swatch.id === selectedSwatchId
 
 							return (
 								<button
 									key={swatch.id}
 									type="button"
-									className="product-card__swatch"
+									className={`product-card__swatch${isSelected ? ' product-card__swatch--selected' : ''}`}
 									style={{ '--swatch-color': swatch.color }}
 									aria-label={`Select color ${swatch.colorName}`}
 									aria-pressed={isSelected}
 									title={swatch.colorName}
+									onClick={() => setSelectedSwatchId(swatch.id)}
 								/>
 							)
 						})}
 
 						{product.additionalSwatchesCount > 0 && (
-							<span className="product-card__swatch-count">
+							<span
+								className="product-card__swatch-count"
+								aria-label={`${product.additionalSwatchesCount} more colors`}
+							>
 								+{product.additionalSwatchesCount}
 							</span>
 						)}
 					</div>
 				</div>
 
-				<button type="button" className="product-card__add-to-cart">
+				<button
+					type="button"
+					className="product-card__add-to-cart"
+					aria-label={`Add ${product.name} to cart`}
+				>
 					Add To Cart
 				</button>
 			</div>
