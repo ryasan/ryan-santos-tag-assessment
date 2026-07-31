@@ -1,0 +1,77 @@
+:root {
+	/* Colors */
+	--color-primary: #563d2e;
+	--color-background: #ffffff;
+	--color-card-bg: #ffffff;
+	--color-image-bg: #faf9f8;
+	--color-badge-new-bg: #e1ecf3;
+	--color-badge-sale-bg: #efe2d8;
+	--color-badge-sale-text: #a34344;
+
+	/* Typography */
+	--font-family-base: 'Open Sans', sans-serif;
+	--font-weight-regular: 400;
+	--font-weight-semibold: 600;
+
+	/* Spacing */
+	--spacing-xs: 4px;
+	--spacing-sm: 8px;
+	--spacing-md: 12px;
+	--spacing-lg: 16px;
+	--spacing-xl: 20px;
+	--spacing-2xl: 24px;
+
+	/* Radii */
+	--radius-sm: 2px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: var(--font-family-base);
+	color: var(--color-primary);
+	background-color: var(--color-background);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+button {
+	cursor: pointer;
+	font-family: inherit;
+	border: none;
+	background: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+}
+
+.page {
+	max-width: 1440px;
+	margin: 0 auto;
+	padding-inline: 32px;
+	background-color: var(--color-background);
+}
+
+@media (max-width: 768px) {
+	.page {
+		padding-inline: 16px;
+	}
+}
