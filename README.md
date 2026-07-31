@@ -2,11 +2,9 @@
 
 A "Best Sellers" product carousel built from the TAG front-end assessment Figma file.
 
-## Stack
+## Live demo
 
-- React + Vite (plain JSX)
-- Plain CSS (BEM)
-- Embla Carousel for drag/swipe
+https://ryan-santos-tag-assessment.vercel.app/
 
 ## Getting Started
 
@@ -16,6 +14,12 @@ npm run dev
 ```
 
 Then open the local URL Vite prints in the terminal.
+
+## Stack
+
+- React + Vite (plain JSX)
+- Plain CSS (BEM) with design tokens in `src/styles/global.css`
+- Embla Carousel for drag/swipe
 
 ## Structure
 
