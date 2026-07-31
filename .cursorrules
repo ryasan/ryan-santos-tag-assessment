@@ -1,0 +1,23 @@
+# Core Principles
+- Build pixel-perfect, responsive components.
+- Write semantic, accessible HTML.
+- Keep the project slim: avoid unnecessary third-party libraries.
+
+# Styling
+- Use plain CSS with BEM. Avoid inline styles unless absolutely necessary.
+- Handcraft modern CSS (flexbox, grid, custom properties, logical properties). DO NOT use Tailwind or any CSS framework.
+- Centralize design tokens in `src/styles/global.css`.
+
+# React Conventions
+- Use functional components and hooks.
+- Prefer plain JavaScript (JSX) over TypeScript for this project.
+- Keep components small and focused.
+- Use kebab-case for file names; keep the components folder flat.
+
+# Commit Messages
+- Use Conventional Commits (e.g., `feat:`, `fix:`, `style:`, `refactor:`, `chore:`).
+- Keep the subject line concise (under 50 characters) and descriptive.
+
+# Accessibility
+- Always consider keyboard navigation (`:focus-visible`).
+- Use appropriate ARIA roles and labels for non-text interactive elements (e.g., swatches).
