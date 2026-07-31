@@ -1,4 +1,9 @@
-const imgClog = '/images/products/clog.png'
+const imgClog = '/images/products/clog-shoe.avif'
+const imgClogAlt =
+	'Black leather Professional clog with a brass buckle, side product photo'
+const imgClogHover = '/images/products/person-wearing-clog-shoes.avif'
+const imgClogHoverAlt =
+	'Person wearing black leather Professional clogs with grey socks, lifestyle photo'
 
 const swatches = [
 	{ id: 's1', color: '#BF8B67', colorName: 'Honey Distressed' },
@@ -15,6 +20,9 @@ export const products = [
 		subtitle: 'Honey Distressed',
 		price: 155,
 		primaryImage: imgClog,
+		primaryImageAlt: imgClogAlt,
+		hoverImage: imgClogHover,
+		hoverImageAlt: imgClogHoverAlt,
 		swatches,
 		selectedSwatchId: 's4',
 		additionalSwatchesCount: 12,
@@ -25,6 +33,9 @@ export const products = [
 		subtitle: 'Honey Distressed',
 		price: 155,
 		primaryImage: imgClog,
+		primaryImageAlt: imgClogAlt,
+		hoverImage: imgClogHover,
+		hoverImageAlt: imgClogHoverAlt,
 		swatches,
 		selectedSwatchId: 's4',
 		additionalSwatchesCount: 12,
@@ -35,6 +46,9 @@ export const products = [
 		subtitle: 'Honey Distressed',
 		price: 155,
 		primaryImage: imgClog,
+		primaryImageAlt: imgClogAlt,
+		hoverImage: imgClogHover,
+		hoverImageAlt: imgClogHoverAlt,
 		badges: [
 			{ text: 'New', type: 'new' },
 			{ text: 'Sale', type: 'sale' },
@@ -49,6 +63,9 @@ export const products = [
 		subtitle: 'Honey Distressed',
 		price: 155,
 		primaryImage: imgClog,
+		primaryImageAlt: imgClogAlt,
+		hoverImage: imgClogHover,
+		hoverImageAlt: imgClogHoverAlt,
 		badges: [
 			{ text: 'New', type: 'new' },
 			{ text: 'Sale', type: 'sale' },
@@ -63,6 +80,9 @@ export const products = [
 		subtitle: 'Honey Distressed',
 		price: 155,
 		primaryImage: imgClog,
+		primaryImageAlt: imgClogAlt,
+		hoverImage: imgClogHover,
+		hoverImageAlt: imgClogHoverAlt,
 		swatches,
 		selectedSwatchId: 's4',
 		additionalSwatchesCount: 12,
@@ -73,6 +93,9 @@ export const products = [
 		subtitle: 'Honey Distressed',
 		price: 155,
 		primaryImage: imgClog,
+		primaryImageAlt: imgClogAlt,
+		hoverImage: imgClogHover,
+		hoverImageAlt: imgClogHoverAlt,
 		badges: [
 			{ text: 'New', type: 'new' },
 			{ text: 'Sale', type: 'sale' },

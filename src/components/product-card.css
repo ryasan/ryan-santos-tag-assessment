@@ -1,11 +1,20 @@
 .product-card {
+	/* These variables are now available to any descendant of .product-card */
+	--product-card-cart-button-height: 40px;
+	--product-card-cart-button-gap: var(--spacing-md);
+	--product-card-body-padding: var(--spacing-xl);
+	--product-card-hover-offset: calc(
+		var(--product-card-cart-button-height) + var(--product-card-cart-button-gap) +
+			var(--product-card-body-padding)
+	);
+
 	display: flex;
 	flex-direction: column;
-	gap: var(--spacing-xl);
 	width: 100%;
 	max-width: 329px;
 	background: var(--color-card-bg);
 	position: relative;
+	overflow: hidden;
 
 	@media (max-width: 768px) {
 		max-width: 280px;
@@ -50,6 +59,10 @@
 
 .product-card__img {
 	position: absolute;
+	transition: opacity 0.4s ease;
+}
+
+.product-card__img--primary {
 	left: 50%;
 	top: 34.8%;
 	width: 73.6%;
@@ -58,6 +71,26 @@
 	translate: -50% 0;
 	object-fit: cover;
 	mix-blend-mode: darken;
+	opacity: 1;
+}
+
+.product-card__img--hover {
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0;
+}
+
+.product-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--product-card-cart-button-gap);
+	width: 100%;
+	padding-block: var(--product-card-body-padding);
+	background: var(--color-card-bg);
+	margin-bottom: calc(-1 * var(--product-card-hover-offset));
+	transition: transform 0.5s ease;
 }
 
 .product-card__info {
@@ -140,4 +173,69 @@
 	line-height: 16px;
 	color: var(--color-primary);
 	margin-left: 2px;
+}
+
+.product-card__add-to-cart {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: var(--product-card-cart-button-height);
+	padding: 0;
+	border: 1px solid var(--color-primary);
+	border-radius: var(--radius-sm);
+	background-color: var(--color-primary);
+	color: var(--color-background);
+	font-size: 14px;
+	font-weight: var(--font-weight-semibold);
+	line-height: 16px;
+	transition: opacity 0.3s ease;
+
+	&:hover {
+		opacity: 0.9;
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
+	}
+}
+
+/* Keyboard / focus: always reveal */
+.product-card:focus-within {
+	.product-card__body {
+		transform: translateY(calc(-1 * var(--product-card-hover-offset)));
+	}
+
+	.product-card__img--primary {
+		opacity: 0;
+	}
+
+	.product-card__img--hover {
+		opacity: 1;
+	}
+}
+
+/* Pointer hover: only when the device supports fine hover */
+@media (hover: hover) and (pointer: fine) {
+	.product-card:hover {
+		.product-card__body {
+			transform: translateY(calc(-1 * var(--product-card-hover-offset)));
+		}
+
+		.product-card__img--primary {
+			opacity: 0;
+		}
+
+		.product-card__img--hover {
+			opacity: 1;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.product-card__body,
+	.product-card__img,
+	.product-card__add-to-cart {
+		transition: none;
+	}
 }
